@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card Generator</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>Profile Card Generator</h1>
+
+  <div class="form-container">
+    <h2>Enter Your Information</h2>
+
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <label>Year Level & Course:</label>
+    <input type="text" id="course">
+
+    <label>Bio:</label>
+    <textarea id="bio"></textarea>
+
+    <label>Favorite Color:</label>
+    <input type="color" id="color">
+
+    <button onclick="profile.generateCard()">Generate Profile Card</button>
+  </div>
+
+  <div>
+    <h2>Your Profile Card</h2>
+    <div id="profileCard" class="card">
+      <h3 id="cardName"></h3>
+      <p id="cardCourse"></p>
+      <p id="cardBio"></p>
+      <button class="like-btn" onclick="profile.toggleLike()">💜 Like</button>
+      <p id="likeCount">0 likes</p>
+    </div>
+  </div>
+
+  <script>
+    const profile = {
+      liked: false,
+
+      // Sa button Generate the profile card only when button is clicked
+      generateCard: function() {
+        const name = document.getElementById('name').value;
+        const course = document.getElementById('course').value;
+        const bio = document.getElementById('bio').value;
+        const color = document.getElementById('color').value;
+
+        document.getElementById('cardName').innerText = name;
+        document.getElementById('cardCourse').innerText = course;
+        document.getElementById('cardBio').innerText = bio;
+
+        // Apply border color from favorite color
+        document.getElementById('profileCard').style.borderColor = color;
+      },
+
+      // Like/unlike toggle
+      toggleLike: function() {
+        this.liked = !this.liked;
+        const likeCount = document.getElementById('likeCount');
+        likeCount.innerText = this.liked ? "1 like" : "0 likes";
+      }
+    };
+  </script>
+</body>
+</html>
