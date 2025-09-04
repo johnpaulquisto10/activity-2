@@ -27,7 +27,14 @@
     <button onclick="profile.generateCard()">Generate Profile Card</button>
   </div>
 
-  <div>
+  <div class="preview-container">
+    <h2>Realtime Preview</h2>
+    <div id="previewCard" class="card no-border">
+      <h3 id="previewName"></h3>
+      <p id="previewCourse"></p>
+      <p id="previewBio"></p>
+    </div>
+
     <h2>Your Profile Card</h2>
     <div id="profileCard" class="card">
       <h3 id="cardName"></h3>
@@ -42,7 +49,20 @@
     const profile = {
       liked: false,
 
-      // Sa button Generate the profile card only when button is clicked
+   
+      initRealtimePreview: function () {
+        document.getElementById('name').addEventListener('input', () => {
+          document.getElementById('previewName').innerText = document.getElementById('name').value;
+        });
+        document.getElementById('course').addEventListener('input', () => {
+          document.getElementById('previewCourse').innerText = document.getElementById('course').value;
+        });
+        document.getElementById('bio').addEventListener('input', () => {
+          document.getElementById('previewBio').innerText = document.getElementById('bio').value;
+        });
+      },
+
+      
       generateCard: function() {
         const name = document.getElementById('name').value;
         const course = document.getElementById('course').value;
@@ -53,17 +73,20 @@
         document.getElementById('cardCourse').innerText = course;
         document.getElementById('cardBio').innerText = bio;
 
-        // Apply border color from favorite color
+        
         document.getElementById('profileCard').style.borderColor = color;
       },
 
-      // Like/unlike toggle
+     
       toggleLike: function() {
         this.liked = !this.liked;
         const likeCount = document.getElementById('likeCount');
         likeCount.innerText = this.liked ? "1 like" : "0 likes";
       }
     };
+
+   
+    profile.initRealtimePreview();
   </script>
 </body>
 </html>
