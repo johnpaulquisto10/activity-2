@@ -1,12 +1,21 @@
 body {
   font-family: Arial, sans-serif;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px; 
   padding: 20px;
 }
 
 .form-container {
-  width: 45%;
+  width: 35%;
+}
+
+.preview-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
 }
 
 input, textarea, button {
@@ -39,9 +48,15 @@ button:hover {
   background: #fff;
 }
 
+
+.no-border {
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .like-btn {
   margin-top: 10px;
-  background: #800080; /* Purple */
+  background: #800080; 
   color: white;
   border: none;
   cursor: pointer;
@@ -51,6 +66,6 @@ button:hover {
 }
 
 .like-btn:hover {
-  background: #4B0082; /* Darker purple */
+  background: #4B0082; 
   color: white;
 }
